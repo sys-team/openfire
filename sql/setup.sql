@@ -8,6 +8,11 @@ begin
     
     insert into ofproperty (name,propValue) 
         on existing update 
+        VALUES ('provider.auth.className','org.jivesoftware.openfire.auth.JDBCAuthProvider')
+    ;
+
+insert into ofproperty (name,propValue) 
+        on existing update 
         VALUES ('jdbcUserProvider.loadUserSQL',string('SELECT username,email FROM ', @tablename, ' WHERE username=?'))
     ;
     
